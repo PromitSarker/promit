@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>অ্যাডমিন — পোর্টফোলিও</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #37352F;
+      --mute: #787774;
+      --line: #E9E9E7;
+      --acc: #1F1F1E;
+      --acc-text: #ffffff;
+      --input-bg: #F5F5F3;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --ink: #EAEAEA;
+        --mute: #9E9E9E;
+        --line: #2A2A2A;
+        --acc: #EAEAEA;
+        --acc-text: #121212;
+        --input-bg: #1E1E1E;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font: 400 16px/1.7 Inter, "Noto Sans Bengali", sans-serif;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    
+    .w { max-width: 680px; margin: 0 auto; padding: 48px 24px 80px; }
+    
+    h1 { font-size: 28px; font-weight: 600; margin-bottom: 32px; letter-spacing: -0.01em; }
+    
+    label { font-size: 14px; font-weight: 500; color: var(--mute); display: block; margin-bottom: 6px; }
+    
+    input, textarea, select {
+      width: 100%; padding: 12px 16px; margin-bottom: 20px;
+      font: inherit; color: inherit; background: var(--input-bg);
+      border: 1px solid var(--line); border-radius: 8px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none; border-color: var(--mute);
+      box-shadow: 0 0 0 3px rgba(120, 119, 116, 0.1);
+    }
+    
+    button {
+      font: inherit; font-weight: 600; padding: 10px 24px;
+      border-radius: 8px; border: 1px solid var(--acc);
+      background: var(--acc); color: var(--acc-text);
+      cursor: pointer; transition: all 0.2s ease;
+    }
+    button:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    button:active:not(:disabled) { transform: translateY(0); }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
+    
+    button.g {
+      background: transparent; color: var(--ink);
+      border: 1px solid var(--line);
+    }
+    button.g:hover:not(:disabled) { background: var(--input-bg); box-shadow: none; }
+    
+    .row {
+      display: flex; justify-content: space-between; gap: 16px;
+      align-items: center; padding: 16px 0;
+      border-top: 1px solid var(--line);
+    }
+    .row div:first-child { font-weight: 500; }
+    .row div:last-child { display: flex; gap: 8px; flex-shrink: 0; }
+    
+    #list { margin-top: 40px; }
+    
+    .actions { display: flex; gap: 12px; margin-top: 8px; align-items: center; }
+    
+    /* Toast Notifications */
+    #toast-container {
+      position: fixed; bottom: 24px; right: 24px;
+      display: flex; flex-direction: column; gap: 12px; z-index: 1000;
+    }
+    .toast {
+      background: var(--ink); color: var(--bg);
+      padding: 12px 24px; border-radius: 8px;
+      font-weight: 500; box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1), fadeOut 0.3s ease 2.7s forwards;
+    }
+    .toast.error { background: #E03E3E; color: white; }
+    
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+  </style>
+</head>
+<body>
+<div class="w">
+  <h1>প্রজেক্ট ম্যানেজ করুন</h1>
+  
+  <label>অ্যাডমিন কোড</label>
+  <input id="tok" type="password" autocomplete="current-password" placeholder="অ্যাডমিন পাসওয়ার্ড দিন">
+  
+  <label>শিরোনাম</label>
+  <input id="title" placeholder="প্রজেক্টের নাম">
+  
+  <label>বিবরণ</label>
+  <textarea id="desc" rows="4" placeholder="প্রজেক্ট সম্পর্কে কিছু লিখুন..."></textarea>
+  
+  <label>ট্যাগ (কমা দিয়ে আলাদা করুন)</label>
+  <input id="tags" placeholder="Python, FastAPI, React...">
+  
+  <label>GitHub লিংক</label>
+  <input id="github" placeholder="https://github.com/...">
+  
+  <label>লাইভ লিংক</label>
+  <input id="live" placeholder="https://...">
+  
+  <label>আইকন (পিক্সেল)</label>
+  <select id="icon">
+    <option value="">স্বয়ংক্রিয়</option>
+    <option value="terminal">টার্মিনাল</option>
+    <option value="chip">চিপ / এআই এজেন্ট</option>
+    <option value="book">বই</option>
+    <option value="cart">কার্ট / ই-কমার্স</option>
+    <option value="mic">মাইক / ভয়েস</option>
+    <option value="search">সার্চ / RAG</option>
+    <option value="bubble">চ্যাট / কথোপকথন</option>
+    <option value="monitor">মনিটর / স্ক্রিন</option>
+    <option value="robot">রোবট</option>
+  </select>
+  
+  <div class="actions">
+    <button id="save">প্রজেক্ট যোগ করুন</button>
+    <button class="g" id="reset" hidden>বাতিল</button>
+  </div>
+  
+  <div id="list">
+    <p style="color: var(--mute);">লোড হচ্ছে...</p>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  
+  let items = [];
+  let editingId = null;
+  
+  // Restore token from session
+  $("tok").value = sessionStorage.token || "";
+
+  // Toast Notification System
+  function showToast(message, isError = false) {
+    const container = $("toast-container");
+    const toast = document.createElement("div");
+    toast.className = `toast ${isError ? 'error' : ''}`;
+    toast.textContent = message;
+    container.appendChild(toast);
+    
+    // Clean up DOM after animation finishes (approx 3s)
+    setTimeout(() => {
+      if (container.contains(toast)) {
+        container.removeChild(toast);
+      }
+    }, 3200);
+  }
+
+  // API Call Wrapper
+  async function apiCall(url, method = "GET", body) {
+    sessionStorage.token = $("tok").value;
+    
+    const options = {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+        "X-Token": $("tok").value
+      }
+    };
+    
+    if (body) {
+      options.body = JSON.stringify(body);
+    }
+
+    const response = await fetch(url, options);
+    
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({}));
+      throw new Error(errData.detail || "কোনো একটা সমস্যা হয়েছে");
+    }
+    
+    return response.json();
+  }
+
+  const escapeHtml = str => String(str).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  // Load Projects
+  async function loadProjects() {
+    try {
+      items = await apiCall("/api/projects");
+      const listEl = $("list");
+      
+      if (items.length === 0) {
+        listEl.innerHTML = "<p style='color: var(--mute);'>কোনো প্রজেক্ট নেই।</p>";
+        return;
+      }
+      
+      listEl.innerHTML = items.map(p => `
+        <div class="row">
+          <div>${escapeHtml(p.title)}</div>
+          <div>
+            <button class="g" onclick="editProject('${p.id}')">এডিট</button>
+            <button class="g" onclick="deleteProject('${p.id}')">মুছুন</button>
+          </div>
+        </div>
+      `).join("");
+    } catch (err) {
+      showToast(err.message, true);
+    }
+  }
+
+  // Reset Form
+  function clearForm() {
+    editingId = null;
+    ["title", "desc", "tags", "github", "live", "icon"].forEach(k => $(k).value = "");
+    $("save").textContent = "প্রজেক্ট যোগ করুন";
+    $("reset").hidden = true;
+  }
+
+  // Edit Project
+  window.editProject = id => {
+    const project = items.find(i => i.id === id);
+    if (!project) return;
+    
+    editingId = id;
+    ["title", "desc", "github", "live", "icon"].forEach(k => $(k).value = project[k] || "");
+    $("tags").value = (project.tags || []).join(", ");
+    
+    $("save").textContent = "পরিবর্তন সংরক্ষণ করুন";
+    $("reset").hidden = false;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Delete Project
+  window.deleteProject = async id => {
+    if (!confirm("আপনি কি নিশ্চিত যে আপনি এই প্রজেক্টটি মুছে ফেলতে চান?")) return;
+    
+    try {
+      await apiCall("/api/projects/" + id, "DELETE");
+      showToast("প্রজেক্ট মুছে ফেলা হয়েছে");
+      loadProjects();
+    } catch (err) {
+      showToast(err.message, true);
+    }
+  };
+
+  // Bind Events
+  $("reset").onclick = clearForm;
+  
+  $("save").onclick = async () => {
+    const title = $("title").value.trim();
+    const desc = $("desc").value.trim();
+    
+    if (!title || !desc) {
+      return showToast("দয়া করে শিরোনাম ও বিবরণ লিখুন", true);
+    }
+
+    const payload = {
+      title,
+      desc,
+      github: $("github").value.trim(),
+      live: $("live").value.trim(),
+      icon: $("icon").value,
+      tags: $("tags").value.split(",").map(s => s.trim()).filter(Boolean)
+    };
+    
+    const saveBtn = $("save");
+    saveBtn.disabled = true;
+    const originalText = saveBtn.textContent;
+    saveBtn.textContent = "অপেক্ষা করুন...";
+    
+    try {
+      const url = editingId ? "/api/projects/" + editingId : "/api/projects";
+      const method = editingId ? "PUT" : "POST";
+      
+      await apiCall(url, method, payload);
+      
+      showToast(editingId ? "পরিবর্তন সংরক্ষণ হয়েছে" : "নতুন প্রজেক্ট যোগ হয়েছে");
+      clearForm();
+      loadProjects();
+    } catch (err) {
+      showToast(err.message, true);
+    } finally {
+      saveBtn.disabled = false;
+      saveBtn.textContent = originalText;
+    }
+  };
+
+  // Initial Load
+  loadProjects();
+</script>
+</body>
+</html>

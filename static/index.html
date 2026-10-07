@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>প্রমিত সরকার — এআই ইঞ্জিনিয়ার</title>
+  <meta name="description" content="আমি প্রমিত, ঢাকার একজন এআই ইঞ্জিনিয়ার। ব্যবসার সময়খেকো কাজ কমাতে এবং জটিল তথ্য ও প্রক্রিয়াকে সহজ করতে এআই-ভিত্তিক সফটওয়্যার তৈরি করি।">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #1F1F1E;
+      --mute: #737370;
+      --line: #ECECE9;
+      --grey: #F5F5F3;
+      
+      --btn-border: #DEDEDA;
+      --btn-bg: #ffffff;
+      --btn-hover: #F5F5F3;
+      --btn-k-bg: #1F1F1E;
+      --btn-k-text: #ffffff;
+      --btn-k-hover: #000000;
+      
+      --text-dark: #4A4A47;
+      --tech-text: #55554F;
+      --link-underline: #CFCFCB;
+      
+      --cta-bg: #191919;
+      --cta-text: #ffffff;
+      --cta-btn-border: #4A4A47;
+      --cta-btn-hover: #2A2A2A;
+      
+      --tag-1-bg: #D3E5EF; --tag-1-text: #183347;
+      --tag-2-bg: #FADEC9; --tag-2-text: #49290E;
+      --tag-3-bg: #E8DEEE; --tag-3-text: #412454;
+      --tag-4-bg: #DBEDDB; --tag-4-text: #1C3829;
+      --tag-5-bg: #FFE2DD; --tag-5-text: #5D1715;
+
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+      --shadow-hover: 0 12px 32px rgba(0,0,0,0.08);
+      --card-bg: #ffffff;
+      --icon-glow: drop-shadow(0 0 12px rgba(0, 0, 0, 0.06));
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --ink: #EAEAEA;
+        --mute: #9E9E9E;
+        --line: #2A2A2A;
+        --grey: #1E1E1E;
+        
+        --btn-border: #333333;
+        --btn-bg: #1A1A1A;
+        --btn-hover: #2A2A2A;
+        --btn-k-bg: #EAEAEA;
+        --btn-k-text: #121212;
+        --btn-k-hover: #ffffff;
+        
+        --text-dark: #B0B0B0;
+        --tech-text: #A0A09F;
+        --link-underline: #444444;
+        
+        --cta-bg: #1A1A1A;
+        --cta-text: #EAEAEA;
+        --cta-btn-border: #4A4A47;
+        --cta-btn-hover: #2A2A2A;
+        
+        --tag-1-bg: #142838; --tag-1-text: #8AB4F8;
+        --tag-2-bg: #381F08; --tag-2-text: #FBC296;
+        --tag-3-bg: #2D163C; --tag-3-text: #DCB8FF;
+        --tag-4-bg: #132A1D; --tag-4-text: #A8DAB5;
+        --tag-5-bg: #3D0D0C; --tag-5-text: #FFB4A9;
+
+        --shadow-hover: 0 12px 32px rgba(0,0,0,0.4);
+        --card-bg: #161616;
+        --icon-glow: drop-shadow(0 0 12px rgba(255, 255, 255, 0.08));
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font: 400 16.5px/1.8 Inter, "Noto Sans Bengali", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+    
+    .w { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; border-bottom: 1px solid var(--line); }
+    section:last-of-type { border-bottom: none; }
+    
+    /* Typography Utilities */
+    .section-title { font-size: clamp(28px, 4vw, 36px); font-weight: 700; line-height: 1.3; margin-bottom: 24px; letter-spacing: -0.02em; }
+    .section-subtitle { font-size: 20px; font-weight: 600; margin-bottom: 16px; color: var(--text-dark); }
+    .muted-text { color: var(--mute); font-size: 16px; margin-bottom: 24px; }
+    .body-text { margin-bottom: 24px; color: var(--text-dark); }
+    
+    .center-text { text-align: center; max-width: 760px; margin: 0 auto; }
+    
+    /* Nav */
+    nav {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 18px 0; border-bottom: 1px solid var(--line);
+      margin-top: 8px; border-top: 1px solid var(--line);
+      animation: fadeInDown 0.6s ease-out;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px; font-weight: 700;
+      font-size: 20px; text-decoration: none;
+    }
+    nav ul { display: flex; gap: 32px; list-style: none; font-size: 15px; font-weight: 500; }
+    nav ul a { text-decoration: underline; text-decoration-color: var(--link-underline); text-underline-offset: 5px; transition: color 0.2s, text-decoration-color 0.2s; }
+    nav ul a:hover { color: var(--mute); text-decoration-color: var(--ink); }
+
+    /* Buttons */
+    .btn {
+      display: inline-block; padding: 10px 20px;
+      border: 1px solid var(--btn-border); border-radius: 8px;
+      background: var(--btn-bg); color: var(--ink);
+      text-decoration: none; font-size: 15px; font-weight: 600;
+      box-shadow: var(--shadow-sm); transition: all 0.2s ease;
+      cursor: pointer; text-align: center;
+    }
+    .btn:hover { background: var(--btn-hover); transform: translateY(-1px); }
+    .btn.k { background: var(--btn-k-bg); color: var(--btn-k-text); border-color: var(--btn-k-bg); }
+    .btn.k:hover { background: var(--btn-k-hover); border-color: var(--btn-k-hover); }
+
+    /* Hero */
+    .hero {
+      padding: 96px 0 104px;
+      animation: fadeIn 0.8s ease-out;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero h3 { font-size: 22px; color: var(--mute); font-weight: 500; margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(38px, 6vw, 56px); line-height: 1.2; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 40px; max-width: 850px; }
+    .hero p { color: var(--text-dark); margin-bottom: 24px; font-size: 18px; max-width: 720px; line-height: 1.7; }
+    .hero .actions { margin-top: 48px; }
+
+    /* Grids */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .grid-card {
+      background: var(--grey); padding: 32px; border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+    .grid-card:hover { transform: translateY(-4px); }
+    .grid-card h3 { font-size: 19px; margin-bottom: 12px; font-weight: 600; }
+    .grid-card p { color: var(--text-dark); font-size: 15.5px; margin: 0; }
+    
+    /* Project/Experience Rows */
+    .row {
+      display: flex; gap: 32px; align-items: flex-start;
+      background: var(--grey); border-radius: 12px; padding: 32px;
+      margin-bottom: 16px; transition: transform 0.3s ease;
+    }
+    .row:hover { transform: translateX(4px); }
+    .row svg { flex-shrink: 0; filter: var(--icon-glow); margin-top: 4px; }
+    .row .meta { color: var(--mute); font-size: 14px; font-weight: 500; display: block; margin-bottom: 6px; }
+    .row h3 { font-size: 20px; font-weight: 600; line-height: 1.4; margin-bottom: 8px; }
+    .row p { color: var(--text-dark); font-size: 15.5px; margin-bottom: 0; }
+
+    /* Numbered Steps */
+    .step { margin-bottom: 48px; }
+    .step h3 { font-size: 22px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+    .step p { color: var(--text-dark); max-width: 700px; }
+
+    /* Projects Gallery */
+    .gal { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .card {
+      border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+      background: var(--card-bg); transition: all 0.3s ease;
+      display: flex; flex-direction: column;
+    }
+    .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); border-color: transparent; }
+    .card .im { background: var(--grey); height: 220px; display: grid; place-items: center; transition: background 0.3s ease; }
+    .card:hover .im svg { filter: var(--icon-glow); transform: scale(1.05); transition: transform 0.4s ease; }
+    .card .b { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
+    .card h3 { font-size: 20px; font-weight: 600; line-height: 1.4; margin-bottom: 10px; }
+    .card p { font-size: 15.5px; color: var(--text-dark); margin-bottom: 24px; flex-grow: 1; }
+    
+    .tags-container { margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 500; line-height: 1.4; }
+    .k1 { background: var(--tag-1-bg); color: var(--tag-1-text); }
+    .k2 { background: var(--tag-2-bg); color: var(--tag-2-text); }
+    .k3 { background: var(--tag-3-bg); color: var(--tag-3-text); }
+    .k4 { background: var(--tag-4-bg); color: var(--tag-4-text); }
+    .k5 { background: var(--tag-5-bg); color: var(--tag-5-text); }
+
+    .ln { display: flex; gap: 16px; font-size: 14.5px; font-weight: 600; border-top: 1px solid var(--line); padding-top: 16px; margin-top: auto; }
+    .ln a { text-underline-offset: 4px; transition: color 0.2s; }
+    .ln a:hover { color: var(--mute); }
+
+    /* FAQ */
+    details { background: var(--grey); border-radius: 10px; margin-bottom: 12px; padding: 18px 24px; transition: background 0.2s ease; }
+    details:hover { background: var(--line); }
+    summary { cursor: pointer; font-weight: 600; list-style: none; font-size: 17px; display: flex; align-items: center; }
+    summary::-webkit-details-marker { display: none; }
+    summary::before { content: "▸"; display: inline-block; width: 24px; color: var(--mute); transition: transform 0.2s ease; }
+    details[open] summary::before { transform: rotate(90deg); }
+    details p { color: var(--text-dark); font-size: 15.5px; margin: 16px 0 0 24px; line-height: 1.7; }
+
+    /* Tech blocks */
+    .tech-group { margin-bottom: 40px; }
+    .tech-group h3 { font-size: 18px; color: var(--mute); font-weight: 500; margin-bottom: 16px; }
+    .tech-group p { font-size: 20px; font-weight: 700; color: var(--tech-text); letter-spacing: -0.01em; line-height: 1.6; }
+
+    /* Text Block Container */
+    .text-block-container { background: var(--grey); padding: 56px; border-radius: 16px; margin: 24px 0; }
+    
+    /* CTA */
+    .cta { background: var(--cta-bg); color: var(--cta-text); border-radius: 20px; text-align: center; padding: 88px 32px; margin: 64px 0 32px; }
+    .cta h2 { font-size: clamp(32px, 5vw, 46px); font-weight: 700; line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .cta h3 { font-size: 20px; font-weight: 400; color: #a0a0a0; margin-bottom: 40px; }
+    .cta .btn { background: transparent; color: var(--cta-text); border-color: var(--cta-btn-border); font-size: 17px; padding: 14px 32px; }
+    .cta .btn:hover { background: var(--cta-btn-hover); transform: translateY(-2px); }
+
+    /* Footer */
+    footer { display: flex; flex-direction: column; gap: 16px; color: var(--mute); font-size: 14.5px; padding: 48px 0 64px; text-align: center; }
+    footer .links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; font-weight: 500; color: var(--ink); }
+    
+    /* Utilities */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 0.3; } 100% { opacity: 0.6; } }
+    
+    .skeleton-card { border: 1px solid var(--line); border-radius: 12px; background: var(--card-bg); height: 420px; display: flex; flex-direction: column; overflow: hidden; }
+    .skel-im { height: 220px; background: var(--grey); animation: pulse 1.5s infinite ease-in-out; }
+    .skel-b { padding: 24px; display: flex; flex-direction: column; gap: 16px; flex-grow: 1; }
+    .skel-line { background: var(--grey); height: 16px; border-radius: 4px; animation: pulse 1.5s infinite ease-in-out; }
+    .skel-line.title { width: 60%; height: 24px; }
+    .skel-line.desc { width: 100%; height: 60px; }
+    .skel-line.tags { width: 40%; height: 24px; margin-top: auto; }
+
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .grid-2, .grid-3, .gal { grid-template-columns: 1fr; }
+      .hero { padding: 56px 0; }
+      .row { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .row svg { margin-bottom: 8px; }
+      .text-block-container { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="w">
+  <nav>
+    <a class="logo" href="#"><span data-i="robot" data-s="32"></span>প্রমিত.</a>
+    <ul>
+      <li><a href="#at-a-glance">কী করি</a></li>
+      <li><a href="#projects">প্রজেক্ট</a></li>
+      <li><a href="#about">পথচলা</a></li>
+      <li><a href="#faq">প্রশ্নোত্তর</a></li>
+    </ul>
+    <a class="btn" href="#contact">কথা বলুন</a>
+  </nav>
+
+  <header class="hero">
+    <h3>হ্যালো, আমি প্রমিত।</h3>
+    <h1>এমন এআই সিস্টেম বানাই, যা আপনার কাজকে সত্যিই সহজ করে।</h1>
+    
+    <p>ব্যবসায় অনেক কাজ আছে যেগুলো করতে হয় বারবার—একই প্রশ্নের উত্তর দেওয়া, অনেক ফাইল থেকে তথ্য খোঁজা, রিপোর্ট তৈরি করা, ডেটা যাচাই করা কিংবা এক সফটওয়্যার থেকে আরেকটায় তথ্য সরানো।</p>
+    <p>এসব কাজের অনেকটাই এআই দিয়ে সহজ করা যায়।</p>
+    <p>আমি এমন AI system তৈরি করি, যা আপনার তথ্য বুঝতে পারে, প্রয়োজনীয় সিদ্ধান্ত নিতে পারে এবং নির্দিষ্ট কাজ নিজে থেকেই সম্পন্ন করতে পারে। স্বাস্থ্যসেবা, ডকুমেন্ট, ই-কমার্স এবং internal business workflow—বিভিন্ন ধরনের বাস্তব ব্যবহারের জন্য এমন সিস্টেম নিয়ে কাজ করেছি।</p>
+    
+    <div class="actions">
+      <a class="btn k" href="mailto:promitsrkr@gmail.com?subject=প্রজেক্ট নিয়ে আলোচনা">আপনার সমস্যাটা বলুন &rarr;</a>
+    </div>
+  </header>
+
+  <section id="at-a-glance">
+    <h2 class="section-title">এক নজরে</h2>
+    <p class="section-subtitle">AI শুধু chatbot নয়</p>
+    <p class="muted-text">আমি মূলত এমন সিস্টেম নিয়ে কাজ করি যেখানে AI-কে আপনার বাস্তব কাজের সঙ্গে যুক্ত করা হয়।</p>
+    
+    <div class="grid-2" style="margin-top: 40px;">
+      <div class="grid-card">
+        <h3>তথ্য খোঁজা</h3>
+        <p>ডকুমেন্ট, PDF, database বা internal knowledge থেকে দরকারি তথ্য বের করা।</p>
+      </div>
+      <div class="grid-card">
+        <h3>সিদ্ধান্ত নেওয়া</h3>
+        <p>প্রশ্ন বা পরিস্থিতি বুঝে পরবর্তী ধাপ ঠিক করা।</p>
+      </div>
+      <div class="grid-card">
+        <h3>কাজ করা</h3>
+        <p>API, software, database বা অন্যান্য tool ব্যবহার করে কাজ সম্পন্ন করা।</p>
+      </div>
+      <div class="grid-card">
+        <h3>মানুষের সাথে কথা বলা</h3>
+        <p>চ্যাট, voice বা বাংলা কথোপকথনের মাধ্যমে ব্যবহারকারীর সাথে কাজ করা।</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="where-can-i-help">
+    <h2 class="section-title">আপনার ব্যবসায় আমি কোথায় কাজে আসতে পারি?</h2>
+    
+    <div class="grid-2" style="margin-top: 48px;">
+      <div>
+        <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 12px;">একই কাজ বারবার করতে হচ্ছে?</h3>
+        <p class="body-text">কাজটা যদি নিয়মভিত্তিক হয় এবং প্রতিদিন বা প্রতি সপ্তাহে বারবার করতে হয়, সেটি automation-এর জন্য ভালো প্রার্থী হতে পারে।</p>
+      </div>
+      <div>
+        <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 12px;">অনেক তথ্য, কিন্তু খুঁজে পাওয়া কঠিন?</h3>
+        <p class="body-text">আপনার PDF, document, manual, report বা internal knowledge-কে এমনভাবে সাজানো যায় যাতে মানুষ স্বাভাবিক ভাষায় প্রশ্ন করেই তথ্য বের করতে পারে।</p>
+      </div>
+      <div>
+        <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 12px;">Customer support সামলাতে সময় যাচ্ছে?</h3>
+        <p class="body-text">একটি AI assistant সাধারণ প্রশ্নের উত্তর দিতে পারে, প্রাসঙ্গিক তথ্য খুঁজে দিতে পারে এবং প্রয়োজনে পরবর্তী কাজেও যেতে পারে।</p>
+      </div>
+      <div>
+        <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 12px;">আপনার software-এর সাথে AI যুক্ত করতে চান?</h3>
+        <p class="body-text">AI-কে আলাদা chatbot হিসেবে না রেখে existing website, software, database বা internal tools-এর সাথে যুক্ত করা যায়।</p>
+      </div>
+      <div>
+        <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 12px;">বাংলা ব্যবহারকারীদের জন্য AI দরকার?</h3>
+        <p class="body-text">বাংলা document বোঝা, বাংলা প্রশ্নের উত্তর দেওয়া এবং বাংলা voice interaction—এসব নিয়েও কাজ করেছি।</p>
+      </div>
+    </div>
+    
+    <div style="margin-top: 24px;">
+      <a class="btn" href="#contact">আপনার সমস্যাটা নিয়ে কথা বলুন &rarr;</a>
+    </div>
+  </section>
+
+  <section id="solutions">
+    <h2 class="section-title">যে ধরনের সমাধান তৈরি করি</h2>
+    <div class="grid-2" style="margin-top: 48px;">
+      
+      <div class="grid-card">
+        <h3>AI Knowledge Assistant</h3>
+        <p class="body-text" style="margin-bottom: 16px;">আপনার প্রতিষ্ঠানের document, manual, report বা internal information-এর ওপর AI assistant তৈরি করা যায়। কর্মীরা প্রশ্ন করবে স্বাভাবিক ভাষায়, সিস্টেম প্রাসঙ্গিক তথ্য খুঁজে উত্তর দেবে।</p>
+        <p style="font-size: 14px; font-weight: 600; color: var(--ink);">যেখানে কাজে লাগে: <span style="font-weight: 400; color: var(--mute);">Company knowledge · SOP · Product information · Research · Reports · Customer support</span></p>
+      </div>
+
+      <div class="grid-card">
+        <h3>AI Agent</h3>
+        <p class="body-text" style="margin-bottom: 16px;">Chatbot-এর পরের ধাপ। AI শুধু উত্তর না দিয়ে প্রয়োজনীয় information খুঁজতে পারে, বিভিন্ন tool ব্যবহার করতে পারে, সিদ্ধান্ত নিতে পারে এবং নির্দিষ্ট workflow-এর কাজ সম্পন্ন করতে পারে।</p>
+        <p style="font-size: 14px; font-weight: 600; color: var(--ink);">যেখানে কাজে লাগে: <span style="font-weight: 400; color: var(--mute);">Business automation · Internal tools · Operations · Customer service · Data processing</span></p>
+      </div>
+
+      <div class="grid-card">
+        <h3>AI + Existing Software</h3>
+        <p class="body-text" style="margin-bottom: 16px;">আপনার বর্তমান software ফেলে নতুন কিছু বানানো সব সময় দরকার হয় না। প্রয়োজন অনুযায়ী AI-কে আপনার existing application, database, API বা internal workflow-এর সাথে যুক্ত করা যায়。</p>
+        <p style="font-size: 14px; font-weight: 600; color: var(--ink);">যেখানে কাজে লাগে: <span style="font-weight: 400; color: var(--mute);">CRM · E-commerce · ERP · Internal dashboards · Business software</span></p>
+      </div>
+
+      <div class="grid-card">
+        <h3>বাংলা AI</h3>
+        <p class="body-text">বাংলা ভাষায় প্রশ্ন করা, document থেকে তথ্য খোঁজা, voice input নেওয়া বা বাংলা conversational experience তৈরি করা যায়। বিশেষ করে যেখানে ব্যবহারকারীরা ইংরেজির চেয়ে বাংলায় স্বচ্ছন্দ, সেখানে এই পার্থক্যটি গুরুত্বপূর্ণ।</p>
+      </div>
+
+      <div class="grid-card">
+        <h3>Voice-based AI</h3>
+        <p class="body-text">কথা বলে information দেওয়া বা নেওয়ার workflow তৈরি করা যায়। Voice input থেকে তথ্য বুঝে সেটিকে task, note, reminder বা structured data-তে রূপান্তর করা সম্ভব।</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="how-i-work">
+    <div class="center-text">
+      <h2 class="section-title">যেভাবে কাজ করি</h2>
+      <p class="section-subtitle">সমস্যা &rarr; Prototype &rarr; Test &rarr; Production</p>
+    </div>
+    
+    <div style="margin-top: 64px; max-width: 800px; margin-left: auto; margin-right: auto;">
+      <div class="step">
+        <h3>১. আগে সমস্যাটা বুঝি</h3>
+        <p>কোথায় সময় যাচ্ছে, কোথায় মানুষকে বারবার একই কাজ করতে হচ্ছে এবং কোথায় ভুল হওয়ার সম্ভাবনা বেশি—সেটা আগে দেখি।</p>
+      </div>
+      <div class="step">
+        <h3>২. ছোট করে একটা সমাধান বানাই</h3>
+        <p>শুরুতেই বিশাল system বানানোর বদলে মূল সমস্যাটার একটা ছোট working version তৈরি করি। এতে খুব দ্রুত বোঝা যায় ধারণাটা বাস্তবে কাজ করছে কি না।</p>
+      </div>
+      <div class="step">
+        <h3>৩. বাস্তব তথ্য দিয়ে পরীক্ষা করি</h3>
+        <p>শুধু demo data দিয়ে না—সম্ভব হলে বাস্তব document, workflow এবং ব্যবহারকারীর আচরণ দিয়ে system পরীক্ষা করি।</p>
+      </div>
+      <div class="step">
+        <h3>৪. দরকার হলে existing software-এর সাথে যুক্ত করি</h3>
+        <p>AI আলাদা কোনো box হয়ে থাকে না। প্রয়োজন অনুযায়ী database, API, dashboard বা অন্য software-এর সাথে যুক্ত করা হয়।</p>
+      </div>
+      <div class="step">
+        <h3>৫. ব্যবহারযোগ্য করে দিই</h3>
+        <p>শেষ লক্ষ্য শুধু একটি AI demo বানানো নয়। ব্যবহারকারী যেন সহজে ব্যবহার করতে পারে, system যেন maintain করা যায় এবং বাস্তব কাজের মধ্যে সেটি ব্যবহার করা যায়—সেদিকেই গুরুত্ব দিই।</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">যা বানিয়েছি</h2>
+    <div id="list" style="margin-top: 48px;">
+      <div class="gal">
+        <div class="skeleton-card"><div class="skel-im"></div><div class="skel-b"><div class="skel-line title"></div><div class="skel-line desc"></div><div class="skel-line tags"></div></div></div>
+        <div class="skeleton-card"><div class="skel-im"></div><div class="skel-b"><div class="skel-line title"></div><div class="skel-line desc"></div><div class="skel-line tags"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exp" id="about">
+    <h2 class="section-title">বাস্তব কাজের অভিজ্ঞতা</h2>
+    
+    <div class="row" style="margin-top: 48px;">
+      <span data-i="chip" data-s="64"></span>
+      <div>
+        <h3>Unified IT Limited</h3>
+        <span class="meta">AI Engineer · জুলাই ২০২৬ – বর্তমান</span>
+        <p>প্রতিষ্ঠানের বিভিন্ন business workflow সহজ করার জন্য AI-based solution নিয়ে কাজ করছি। AI assistant, automation এবং existing software ও data-এর সাথে AI integration—এই ধরনের কাজের পাশাপাশি system-কে বাস্তব ব্যবহারের উপযোগী করার দিকেও কাজ করছি।</p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <span data-i="terminal" data-s="64"></span>
+      <div>
+        <h3>SM Technology</h3>
+        <span class="meta">AI Engineer · মে ২০২৫ – জুলাই ২০২৬</span>
+        <p>বাস্তব ব্যবসায় ব্যবহারের জন্য AI-powered system তৈরি করেছি। এখানে মূল বিষয় ছিল শুধু model কাজ করানো নয়—system যেন দ্রুত চলে, যুক্তিসঙ্গত খরচে পরিচালনা করা যায় এবং বাস্তব ব্যবহারকারীর জন্য নির্ভরযোগ্য হয়।</p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <span data-i="monitor" data-s="64"></span>
+      <div>
+        <h3>Raim Laboratory</h3>
+        <span class="meta">Junior Software Developer · জুলাই ২০২৩ – জুলাই ২০২৪</span>
+        <p>Laboratory inventory ও medicine management-এর জন্য software তৈরি করেছি। Stock tracking, reporting এবং inventory discrepancy detection-এর মতো কাজগুলোকে একটি centralized system-এর মধ্যে আনার চেষ্টা ছিল মূল লক্ষ্য।</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="technologies">
+    <h2 class="section-title">যেসব প্রযুক্তি নিয়ে নিয়মিত কাজ করি</h2>
+    
+    <div class="grid-2" style="margin-top: 48px;">
+      <div class="tech-group">
+        <h3>AI / LLM</h3>
+        <p>LangChain · LangGraph · OpenAI · Gemini · Groq · Hugging Face · RAG · AI Agents · Fine-tuning</p>
+      </div>
+      <div class="tech-group">
+        <h3>Backend</h3>
+        <p>Python · FastAPI · Django · Django REST Framework</p>
+      </div>
+      <div class="tech-group">
+        <h3>Database</h3>
+        <p>PostgreSQL · MongoDB · ChromaDB · FAISS</p>
+      </div>
+      <div class="tech-group">
+        <h3>Automation & Infrastructure</h3>
+        <p>n8n · Docker · Git · Linux</p>
+      </div>
+    </div>
+    
+    <div class="text-block-container" style="margin-top: 24px;">
+      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">শুধু AI নয়</h3>
+      <p class="body-text" style="margin: 0;">AI system সফল করতে model একাই যথেষ্ট নয়। প্রয়োজন অনুযায়ী backend API, database, authentication, automation, deployment এবং existing software integration-এর সাথেও কাজ করি। এতে project-টাকে শুধু একটি AI demo হিসেবে নয়, একটি ব্যবহারযোগ্য software system হিসেবে তৈরি করা যায়।</p>
+    </div>
+  </section>
+
+  <section id="what-kind-of-projects">
+    <h2 class="section-title">কী ধরনের project নিয়ে কাজ করতে পারি?</h2>
+    
+    <div class="grid-2" style="margin-top: 48px;">
+      <div>
+        <h3 style="font-size: 19px; font-weight: 600; margin-bottom: 8px;">ছোট একটি AI feature</h3>
+        <p class="body-text">আপনার existing software-এ AI-powered search, document Q&A, recommendation বা automation যোগ করা।</p>
+      </div>
+      <div>
+        <h3 style="font-size: 19px; font-weight: 600; margin-bottom: 8px;">একটি সম্পূর্ণ AI application</h3>
+        <p class="body-text">শূন্য থেকে AI-powered web application তৈরি করা—backend, database, AI layer এবং deploymentসহ।</p>
+      </div>
+      <div>
+        <h3 style="font-size: 19px; font-weight: 600; margin-bottom: 8px;">Existing system-এ AI integration</h3>
+        <p class="body-text">আপনার বর্তমানে ব্যবহৃত software-এর সাথে AI model বা agent যুক্ত করা।</p>
+      </div>
+      <div>
+        <h3 style="font-size: 19px; font-weight: 600; margin-bottom: 8px;">Proof of Concept</h3>
+        <p class="body-text">কোনো AI idea বাস্তবে কাজ করবে কি না, সেটি দ্রুত একটি prototype দিয়ে যাচাই করা।</p>
+      </div>
+      <div>
+        <h3 style="font-size: 19px; font-weight: 600; margin-bottom: 8px;">Business workflow automation</h3>
+        <p class="body-text">মানুষকে বারবার করতে হয় এমন নির্দিষ্ট কাজগুলো automation-এর মাধ্যমে কমিয়ে আনা।</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section id="faq">
+    <h2 class="section-title">অনেকে যা জানতে চান</h2>
+    <div style="margin-top: 48px;">
+      <details>
+        <summary>আমার ব্যবসায় AI আসলে কী করতে পারে?</summary>
+        <p>এটা আপনার কাজের ওপর নির্ভর করে। যে কাজগুলো বারবার করতে হয়, অনেক তথ্যের মধ্যে খুঁজতে হয়, বা নির্দিষ্ট নিয়ম মেনে করতে হয়—সেগুলোর অনেকটাই automation বা AI-এর জন্য ভালো candidate হতে পারে। আপনার workflow শুনলে আমি বোঝাতে পারব কোথায় AI কাজে আসতে পারে এবং কোথায় না।</p>
+      </details>
+      <details>
+        <summary>আমার কোনো technical knowledge নেই। তবুও কি কথা বলতে পারব?</summary>
+        <p>অবশ্যই। কোন framework ব্যবহার করবেন, কোন model লাগবে—এসব আপনাকে জানার দরকার নেই। আপনার সমস্যা এবং আপনার কাজের প্রক্রিয়াটা নিজের ভাষায় বললেই হবে।</p>
+      </details>
+      <details>
+        <summary>পুরো project কি শুরু থেকে বানাতে পারবেন?</summary>
+        <p>Project-এর ধরন অনুযায়ী করা যায়। AI layer-এর পাশাপাশি backend, database, API integration, automation এবং deployment-এর মতো অংশেও কাজ করি।</p>
+      </details>
+      <details>
+        <summary>আগে কি prototype বানানো যায়?</summary>
+        <p>হ্যাঁ। বিশেষ করে নতুন AI idea হলে শুরুতেই বড় investment না করে আগে একটি working prototype তৈরি করে ধারণাটি যাচাই করা যেতে পারে।</p>
+      </details>
+      <details>
+        <summary>বাংলা নিয়ে কাজ করা যায়?</summary>
+        <p>হ্যাঁ। বাংলা document understanding, RAG, conversational AI, voice input এবং language model fine-tuning—এসব নিয়েই কাজ করেছি।</p>
+      </details>
+      <details>
+        <summary>Project শেষ হওয়ার পর?</summary>
+        <p>প্রয়োজন অনুযায়ী deployment, troubleshooting, improvement এবং নতুন feature যোগ করার কাজও করা যায়।</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="about-me">
+    <h2 class="section-title">আমার সম্পর্কে</h2>
+    <div class="text-block-container">
+      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 24px;">আমি প্রমিত।</h3>
+      <p class="body-text">AI Engineer হিসেবে আমার মূল আগ্রহ এমন software তৈরি করা, যা মানুষের কাজকে সত্যিই সহজ করে।</p>
+      <p class="body-text">AI model নিয়ে experiment করা যেমন ভালো লাগে, তেমনি সেই model-কে একটি real-world application-এর মধ্যে বসিয়ে ব্যবহারযোগ্য করে তোলাটাও আমার কাছে সমান গুরুত্বপূর্ণ।</p>
+      <p class="body-text" style="margin: 0;">একদিকে AI, অন্যদিকে software engineering—এই দুই দিককে একসাথে ব্যবহার করেই আমি project তৈরি করতে পছন্দ করি。</p>
+    </div>
+  </section>
+
+  <section style="border-bottom: none; padding-bottom: 0;">
+    <h2 class="section-title">আপনার সমস্যাটা হয়তো আমি solve করতে পারি</h2>
+    <p class="body-text">আপনার মাথায় কোনো AI idea থাকতে পারে। অথবা হয়তো শুধু জানেন—“এই কাজটা করতে আমাদের অনেক সময় নষ্ট হয়।”</p>
+    <p class="body-text">দুটোর যেকোনো একটি নিয়ে কথা বলা যায়। আপনাকে technical language-এ explain করতে হবে না। সমস্যাটা নিজের মতো করে বলুন।</p>
+    <p class="body-text" style="margin-bottom: 32px;">আমি আগে বুঝব, তারপর বলব—AI দিয়ে সেটার ভালো সমাধান করা সম্ভব কি না।</p>
+    <a class="btn k" href="#contact">চলুন কথা বলি &rarr;</a>
+  </section>
+
+  <section class="cta" id="contact">
+    <h2>মাথায় কোনো idea আছে?</h2>
+    <h3>কাজটা নিয়ে কথা বলি। তারপর দেখি, সেটাকে কীভাবে সহজ করা যায়।</h3>
+    <a class="btn" href="mailto:promitsrkr@gmail.com?subject=প্রজেক্ট নিয়ে আলোচনা">কথা বলুন &rarr;</a>
+  </section>
+  
+  <footer>
+    <div class="links">
+      <a href="mailto:promitsrkr@gmail.com">ইমেইল</a>
+      <a href="tel:+8801797046851">ফোন</a>
+      <a href="https://linkedin.com/in/YOUR_LINKEDIN" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/YOUR_GITHUB" rel="noopener">GitHub</a>
+    </div>
+    
+    <div style="font-weight: 600; color: var(--ink); margin-bottom: 8px;">প্রমিত সরকার</div>
+    <div>AI Engineer · Dhaka, Bangladesh</div>
+    <div style="margin-bottom: 24px;">AI Systems · Automation · RAG · AI Agents · Bengali AI</div>
+    
+    <div>© 2026 Promit Sarker. All rights reserved.</div>
+  </footer>
+</div>
+
+<script>
+  // Pixel Art Icon Data
+  const IC = {
+    robot: "       ##       |       ##       |  ############  | #wwwwwwwwwwww# | #wwwwwwwwwwww# |##w####ww####w##|##w#gg#ww#gg#w##|##w####ww####w##| #wwwwwwwwwwww# | #ww#wwwwww#ww# | #www######www# | #wwwwwwwwwwww# |  ############  |    ########    |   #wwwwwwww#   |  ############  ",
+    monitor: "############|#wwwwwwwwww#|#wwwwwwwwww#|#ww#wwww#ww#|#wwwwwwwwww#|#w#wwwwww#w#|#ww######ww#|#wwwwwwwwww#|############|    ####    |  ########  ",
+    terminal: "############|#gggggggggg#|############|#wwwwwwwwww#|#w#wwwwwwww#|#ww#wwwwwww#|#www#wwwwww#|#ww#wwwwwww#|#w#wwww###w#|#wwwwwwwwww#|############",
+    search: "   ######   |  #wwwwww#  | #wwwwwwww# | #wwwwwwww# | #wwwwwwww# | #wwwwwwww# |  #wwwwww#  |   ######   |        ##  |         ## |          ##",
+    chip: "  # # # #   | ########## | #wwwwwwww# |##wwwwwwww##| #ww####ww# |##ww#gg#ww##| #ww#gg#ww# |##ww####ww##| #wwwwwwww# | ########## |  # # # #   ",
+    book: " ####  #### |#wwww##wwww#|#wggw##wggw#|#wwww##wwww#|#wggw##wggw#|#wwww##wwww#|#wwww##wwww#| ####  #### ",
+    cart: "##         | #         | # ####### | # #wwwww# |  ##wwwww# |   #wwwww# |   ####### |    #   #  |   ##  ##  ",
+    mic: "   ####   |  #wwww#  |  #wwww#  |  #wwww#  |  #wwww#  |# #wwww# #|#  ####  #| #      # |  ######  |    ##    |    ##    |   ####   ",
+    bubble: " ########## |#wwwwwwwwww#|#wwwwwwwwww#|#w#ww#ww#ww#|#wwwwwwwwww#| ####ww#####|    #w#     |     ##     "
+  };
+
+  const PAL = { "#": "#1F1F1E", "g": "#9A9A95", "w": "#F0F0EC" };
+
+  function px(name, size) {
+    const grid = (IC[name] || IC.monitor).split("|");
+    const width = Math.max(...grid.map(row => row.length));
+    let rects = "";
+    
+    grid.forEach((row, y) => {
+      [...row].forEach((char, x) => {
+        if (PAL[char]) {
+          rects += `<rect x="${x}" y="${y}" width="1.04" height="1.04" fill="${PAL[char]}"/>`;
+        }
+      });
+    });
+    
+    const height = size * grid.length / width;
+    return `<svg viewBox="0 0 ${width} ${grid.length}" width="${size}" height="${height}" shape-rendering="crispEdges" aria-hidden="true">${rects}</svg>`;
+  }
+
+  function fillIcons() {
+    document.querySelectorAll("[data-i]").forEach(el => {
+      el.innerHTML = px(el.dataset.i, +el.dataset.s);
+    });
+  }
+  fillIcons();
+
+  const escapeHtml = str => String(str).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const safeUrl = url => /^https?:\/\//.test(url) ? escapeHtml(url) : "";
+  const generateTag = tag => {
+    const colorIndex = ([...tag].reduce((acc, char) => acc + char.charCodeAt(0), 0) % 5) + 1;
+    return `<span class="tag k${colorIndex}">${escapeHtml(tag)}</span>`;
+  };
+
+  const fallbackIcons = ["terminal", "chip", "book", "cart", "mic"];
+  
+  fetch("/api/projects")
+    .then(res => res.json())
+    .then(items => {
+      const container = document.getElementById("list");
+      
+      if (!items || !items.length) {
+        container.innerHTML = '<p class="muted-text">শিগগিরই নতুন প্রজেক্ট আসছে।</p>';
+        return;
+      }
+      
+      let html = '<div class="gal">';
+      items.forEach((project, index) => {
+        const links = [
+          safeUrl(project.github) && `<a href="${safeUrl(project.github)}" rel="noopener">GitHub</a>`,
+          safeUrl(project.live) && `<a href="${safeUrl(project.live)}" rel="noopener">লাইভ দেখুন</a>`
+        ].filter(Boolean).join("");
+
+        const iconName = project.icon || fallbackIcons[index % fallbackIcons.length];
+        
+        // Use exactly the user provided index (01, 02) format for the project title numbering as they requested, if needed, 
+        // but here we just render the dynamic title. The user added "01 — Bro-CLI", we can extract it or just rely on the JSON title.
+        
+        html += `
+          <article class="card" style="animation: fadeIn ${(index * 0.1) + 0.3}s ease-out backwards">
+            <div class="im">
+              ${px(iconName, 72)}
+            </div>
+            <div class="b">
+              <h3>${String(index + 1).padStart(2, '0')} — ${escapeHtml(project.title)}</h3>
+              <p>${escapeHtml(project.desc)}</p>
+              <div class="tags-container">
+                ${project.tags.map(generateTag).join("")}
+              </div>
+              ${links ? `<div class="ln">${links}</div>` : ""}
+            </div>
+          </article>
+        `;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById("list").innerHTML = '<p class="muted-text">প্রজেক্ট লোড করা যায়নি। পৃষ্ঠাটি আবার লোড করুন।</p>';
+    });
+</script>
+</body>
+</html>

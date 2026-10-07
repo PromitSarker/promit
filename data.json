@@ -1,0 +1,106 @@
+[
+  {
+    "id": "p1",
+    "title": "Bro-CLI",
+    "desc": "কমান্ড না জেনেও কম্পিউটারকে কাজ দিতে পারেন। ব্যবহারকারী সাধারণ ভাষায় কী করতে চান সেটা বলবে, আর AI প্রয়োজনীয় command তৈরি করে সেটি চালানোর আগে যাচাই করবে। কাজের মধ্যে ভুল হলে সেটি বুঝে ঠিক করার চেষ্টাও করতে পারে।",
+    "tags": [
+      "Agentic AI",
+      "Gemini",
+      "Groq"
+    ],
+    "github": "",
+    "live": "",
+    "icon": "terminal"
+  },
+  {
+    "id": "p2",
+    "title": "AbegiLlama",
+    "desc": "বড় language model-গুলো ইংরেজিতে খুব ভালো কাজ করলেও বাংলায় সব সময় স্বাভাবিক ফল দেয় না। Llama-3 model-কে বাংলা conversational data দিয়ে fine-tune করেছি, যাতে এটি বাংলায় আরও উপযোগীভাবে উত্তর দিতে পারে।",
+    "tags": [
+      "Fine-tuning",
+      "Bengali NLP",
+      "Hugging Face"
+    ],
+    "github": "",
+    "live": "",
+    "icon": "chip"
+  },
+  {
+    "id": "p3",
+    "title": "BanglaBuddy",
+    "desc": "স্ক্যান করা বাংলা বই থেকে text বের করে, সেই information index করে এবং ব্যবহারকারীকে বইটির সাথে কথোপকথনের মাধ্যমে প্রশ্ন করার সুযোগ দেয়। নির্দিষ্ট তথ্য খুঁজতে পুরো বই পড়ার দরকার হয় না।",
+    "tags": [
+      "RAG",
+      "OCR",
+      "Bengali AI"
+    ],
+    "github": "",
+    "live": "",
+    "icon": "book"
+  },
+  {
+    "id": "p4",
+    "title": "eAI-Commerce",
+    "desc": "একজন customer কী চাইছেন সেটা শুধু keyword দেখে নয়, কথোপকথনের মাধ্যমে বোঝার চেষ্টা করে। উপযুক্ত product খুঁজে দেখায়, একাধিক ভাষায় কথা বলতে পারে এবং inventory information যাচাই করতে পারে।",
+    "tags": [
+      "E-commerce",
+      "RAG",
+      "ChromaDB"
+    ],
+    "github": "",
+    "live": "",
+    "icon": "cart"
+  },
+  {
+    "id": "p5",
+    "title": "Luna",
+    "desc": "“কাল বিকেলে ডাক্তার দেখাতে হবে।” ব্যবহারকারী শুধু কথাটা বলবে। Luna সেটাকে বুঝে একটি structured task-এ পরিণত করবে—কী কাজ, কখন করতে হবে এবং কতটা গুরুত্বপূর্ণ।",
+    "tags": [
+      "Voice AI",
+      "Whisper",
+      "GPT"
+    ],
+    "github": "",
+    "live": "",
+    "icon": "mic"
+  },
+  {
+    "id": "p6",
+    "title": "Hook - AI Rizz Wingman",
+    "desc": "কথা বলার সঠিক শব্দ খুঁজে পাচ্ছেন না? Hook আপনার হয়ে কথাটা শুরু করে। স্ক্রিনশট বা চ্যাটের প্রসঙ্গ দিলেই Hook কথোপকথনের টোন, পরিস্থিতি ও আপনার পছন্দের স্টাইল বুঝে স্বাভাবিক ও আকর্ষণীয় রিপ্লাই সাজেস্ট করে। Safe, Confident কিংবা Bold—আপনার vibe অনুযায়ী প্রতিটি রিপ্লাই তৈরি হয়।",
+    "tags": [
+      "AI Assistant",
+      "Mobile App",
+      "iOS"
+    ],
+    "github": "",
+    "live": "https://apps.apple.com/us/app/hook-ai-rizz-wingman/id6766006483",
+    "icon": "smartphone"
+  },
+  {
+    "id": "p7",
+    "title": "Manifex App",
+    "desc": "AI-ভিত্তিক একটি প্ল্যাটফর্ম যা ব্যবহারকারীদের ইংরেজি শিখতে সাহায্য করে। এটি ইন্টারেক্টিভ লেসন, রিয়েল-টাইম ফিডব্যাক এবং পার্সোনালাইজড লার্নিং পাথ দিয়ে ইংরেজি শেখাকে আরও সহজ ও কার্যকর করে তোলে।",
+    "tags": [
+      "EdTech",
+      "AI Learning",
+      "Mobile App"
+    ],
+    "github": "",
+    "live": "https://play.google.com/store/apps/details?id=com.manifex.app&hl=en",
+    "icon": "book"
+  },
+  {
+    "id": "p8",
+    "title": "RT Communication AI Agent",
+    "desc": "RT Communication-এর জন্য তৈরি একটি রিয়েল-টাইম AI চ্যাট এবং কলিং এজেন্ট। এটি টেক্সট ও ভয়েস—উভয় মাধ্যমেই ব্যবহারকারীদের সাথে তাৎক্ষণিক যোগাযোগ করতে এবং রিয়েল-টাইমে প্রশ্নের উত্তর দিতে সক্ষম।",
+    "tags": [
+      "AI Chat & Call",
+      "Voice AI",
+      "Web App"
+    ],
+    "github": "",
+    "live": "https://ai.rtcom.it.com/",
+    "icon": "phone-call"
+  }
+]
