@@ -13,10 +13,12 @@
   <style>
     :root {
       --bg: #ffffff;
-      --ink: #1F1F1E;
-      --mute: #737370;
-      --line: #ECECE9;
-      --grey: #F5F5F3;
+      --bg-rgb: 255, 255, 255;
+      --bg-gradient: radial-gradient(circle at top center, rgba(240, 248, 245, 0.6) 0%, #ffffff 100%);
+      --ink: #111111;
+      --mute: #666666;
+      --line: #E5E5E5;
+      --grey: #F7F7F7;
       
       --btn-border: #DEDEDA;
       --btn-bg: #ffffff;
@@ -25,14 +27,14 @@
       --btn-k-text: #ffffff;
       --btn-k-hover: #000000;
       
-      --text-dark: #4A4A47;
-      --tech-text: #55554F;
+      --text-dark: #333333;
+      --tech-text: #444444;
       --link-underline: #CFCFCB;
       
-      --cta-bg: #191919;
+      --cta-bg: #111111;
       --cta-text: #ffffff;
-      --cta-btn-border: #4A4A47;
-      --cta-btn-hover: #2A2A2A;
+      --cta-btn-border: #333333;
+      --cta-btn-hover: #222222;
       
       --tag-1-bg: #D3E5EF; --tag-1-text: #183347;
       --tag-2-bg: #FADEC9; --tag-2-text: #49290E;
@@ -40,35 +42,37 @@
       --tag-4-bg: #DBEDDB; --tag-4-text: #1C3829;
       --tag-5-bg: #FFE2DD; --tag-5-text: #5D1715;
 
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
-      --shadow-hover: 0 12px 32px rgba(0,0,0,0.08);
-      --card-bg: #ffffff;
-      --icon-glow: drop-shadow(0 0 12px rgba(0, 0, 0, 0.06));
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
+      --shadow-hover: 0 20px 40px rgba(0,0,0,0.08);
+      --card-bg: rgba(255, 255, 255, 0.7);
+      --icon-glow: drop-shadow(0 0 16px rgba(0, 0, 0, 0.08));
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #121212;
-        --ink: #EAEAEA;
-        --mute: #9E9E9E;
-        --line: #2A2A2A;
-        --grey: #1E1E1E;
+        --bg: #0F0F0F;
+        --bg-rgb: 15, 15, 15;
+        --bg-gradient: radial-gradient(circle at top center, rgba(20, 35, 30, 0.6) 0%, #0F0F0F 100%);
+        --ink: #F2F2F2;
+        --mute: #A0A0A0;
+        --line: #262626;
+        --grey: #171717;
         
         --btn-border: #333333;
-        --btn-bg: #1A1A1A;
-        --btn-hover: #2A2A2A;
-        --btn-k-bg: #EAEAEA;
-        --btn-k-text: #121212;
+        --btn-bg: #141414;
+        --btn-hover: #222222;
+        --btn-k-bg: #F2F2F2;
+        --btn-k-text: #0F0F0F;
         --btn-k-hover: #ffffff;
         
-        --text-dark: #B0B0B0;
-        --tech-text: #A0A09F;
+        --text-dark: #CCCCCC;
+        --tech-text: #BBBBBB;
         --link-underline: #444444;
         
-        --cta-bg: #1A1A1A;
-        --cta-text: #EAEAEA;
-        --cta-btn-border: #4A4A47;
-        --cta-btn-hover: #2A2A2A;
+        --cta-bg: #141414;
+        --cta-text: #F2F2F2;
+        --cta-btn-border: #333333;
+        --cta-btn-hover: #222222;
         
         --tag-1-bg: #142838; --tag-1-text: #8AB4F8;
         --tag-2-bg: #381F08; --tag-2-text: #FBC296;
@@ -76,16 +80,23 @@
         --tag-4-bg: #132A1D; --tag-4-text: #A8DAB5;
         --tag-5-bg: #3D0D0C; --tag-5-text: #FFB4A9;
 
-        --shadow-hover: 0 12px 32px rgba(0,0,0,0.4);
-        --card-bg: #161616;
-        --icon-glow: drop-shadow(0 0 12px rgba(255, 255, 255, 0.08));
+        --shadow-hover: 0 20px 40px rgba(0,0,0,0.4);
+        --card-bg: rgba(20, 20, 20, 0.6);
+        --icon-glow: drop-shadow(0 0 16px rgba(255, 255, 255, 0.08));
       }
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+    
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 5px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--mute); }
+
     body {
-      background: var(--bg);
+      background: var(--bg-gradient);
+      background-attachment: fixed;
       color: var(--ink);
       font: 400 16.5px/1.8 Inter, "Noto Sans Bengali", system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -108,9 +119,14 @@
     
     /* Nav */
     nav {
+      position: sticky; top: 16px; z-index: 100;
+      background: rgba(var(--bg-rgb), 0.7);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      padding: 18px 0; border-bottom: 1px solid var(--line);
-      margin-top: 8px; border-top: 1px solid var(--line);
+      padding: 16px 24px; border: 1px solid var(--line);
+      border-radius: 16px;
+      margin-top: 16px;
+      box-shadow: var(--shadow-sm);
       animation: fadeInDown 0.6s ease-out;
     }
     .logo {
@@ -123,14 +139,14 @@
 
     /* Buttons */
     .btn {
-      display: inline-block; padding: 10px 20px;
-      border: 1px solid var(--btn-border); border-radius: 8px;
+      display: inline-block; padding: 12px 24px;
+      border: 1px solid var(--btn-border); border-radius: 10px;
       background: var(--btn-bg); color: var(--ink);
       text-decoration: none; font-size: 15px; font-weight: 600;
-      box-shadow: var(--shadow-sm); transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer; text-align: center;
     }
-    .btn:hover { background: var(--btn-hover); transform: translateY(-1px); }
+    .btn:hover { background: var(--btn-hover); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
     .btn.k { background: var(--btn-k-bg); color: var(--btn-k-text); border-color: var(--btn-k-bg); }
     .btn.k:hover { background: var(--btn-k-hover); border-color: var(--btn-k-hover); }
 
@@ -176,13 +192,14 @@
     /* Projects Gallery */
     .gal { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .card {
-      border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
-      background: var(--card-bg); transition: all 0.3s ease;
+      border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+      background: var(--card-bg); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex; flex-direction: column;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
     }
-    .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); border-color: transparent; }
-    .card .im { background: var(--grey); height: 220px; display: grid; place-items: center; transition: background 0.3s ease; }
-    .card:hover .im svg { filter: var(--icon-glow); transform: scale(1.05); transition: transform 0.4s ease; }
+    .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-6px); border-color: transparent; }
+    .card .im { background: var(--grey); height: 220px; display: grid; place-items: center; transition: background 0.4s ease; }
+    .card:hover .im svg { filter: var(--icon-glow); transform: scale(1.08); transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
     .card .b { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
     .card h3 { font-size: 20px; font-weight: 600; line-height: 1.4; margin-bottom: 10px; }
     .card p { font-size: 15.5px; color: var(--text-dark); margin-bottom: 24px; flex-grow: 1; }
@@ -231,6 +248,16 @@
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 0.3; } 100% { opacity: 0.6; } }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
     
     .skeleton-card { border: 1px solid var(--line); border-radius: 12px; background: var(--card-bg); height: 420px; display: flex; flex-direction: column; overflow: hidden; }
     .skel-im { height: 220px; background: var(--grey); animation: pulse 1.5s infinite ease-in-out; }
@@ -659,6 +686,29 @@
       console.error(err);
       document.getElementById("list").innerHTML = '<p class="muted-text">প্রজেক্ট লোড করা যায়নি। পৃষ্ঠাটি আবার লোড করুন।</p>';
     });
+</script>
+<script>
+  // Scroll Reveal Animation
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+  
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        scrollObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.row, .step, .text-block-container').forEach((el) => {
+      el.classList.add('reveal');
+      scrollObserver.observe(el);
+    });
+  });
 </script>
 </body>
 </html>
