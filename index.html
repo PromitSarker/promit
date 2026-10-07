@@ -391,6 +391,30 @@
         <p class="body-text">কথা বলে information দেওয়া বা নেওয়ার workflow তৈরি করা যায়। Voice input থেকে তথ্য বুঝে সেটিকে task, note, reminder বা structured data-তে রূপান্তর করা সম্ভব।</p>
       </div>
 
+      <div class="grid-card">
+        <h3>Automated Document Processing</h3>
+        <p class="body-text" style="margin-bottom: 16px;">বিভিন্ন ধরনের ডকুমেন্ট (PDF, Word, Images) থেকে স্বয়ংক্রিয়ভাবে তথ্য বের করা, ক্লাসিফাই করা এবং ডেটা এন্ট্রি করার কাজ সহজ করা যায়।</p>
+        <p style="font-size: 14px; font-weight: 600; color: var(--ink);">যেখানে কাজে লাগে: <span style="font-weight: 400; color: var(--mute);">Data extraction · Invoice processing · Forms · ID verification</span></p>
+      </div>
+
+      <div class="grid-card">
+        <h3>Automated Report & Content Generation</h3>
+        <p class="body-text" style="margin-bottom: 16px;">ডেটা বা নির্দিষ্ট তথ্যের ওপর ভিত্তি করে স্বয়ংক্রিয়ভাবে রিপোর্ট, সামারি বা কন্টেন্ট তৈরি করা। এতে সময় বাঁচে এবং ভুল হওয়ার সম্ভাবনা কমে।</p>
+        <p style="font-size: 14px; font-weight: 600; color: var(--ink);">যেখানে কাজে লাগে: <span style="font-weight: 400; color: var(--mute);">Business reports · Weekly summaries · Content drafting · Financial analysis</span></p>
+      </div>
+
+      <div class="grid-card">
+        <h3>Feedback & Sentiment Analysis</h3>
+        <p class="body-text" style="margin-bottom: 16px;">অসংখ্য কাস্টমার রিভিউ, ফিডব্যাক বা সোশ্যাল মিডিয়া কমেন্ট বিশ্লেষণ করে কাস্টমারদের মনোভাব বোঝা এবং গুরুত্বপূর্ণ ইনসাইট বের করা যায়।</p>
+        <p style="font-size: 14px; font-weight: 600; color: var(--ink);">যেখানে কাজে লাগে: <span style="font-weight: 400; color: var(--mute);">Product review · Support tickets · Social media · Market research</span></p>
+      </div>
+
+      <div class="grid-card">
+        <h3>Personalized Recommendations</h3>
+        <p class="body-text" style="margin-bottom: 16px;">ব্যবহারকারীদের আগের আচরণ এবং পছন্দের ওপর ভিত্তি করে তাদের জন্য সবচেয়ে প্রাসঙ্গিক প্রোডাক্ট, কন্টেন্ট বা সার্ভিস সাজেস্ট করা।</p>
+        <p style="font-size: 14px; font-weight: 600; color: var(--ink);">যেখানে কাজে লাগে: <span style="font-weight: 400; color: var(--mute);">E-commerce · Content platforms · User engagement · Marketing</span></p>
+      </div>
+
     </div>
   </section>
 
@@ -552,15 +576,6 @@
     </div>
   </section>
 
-  <section id="about-me">
-    <h2 class="section-title">আমার সম্পর্কে</h2>
-    <div class="text-block-container">
-      <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 24px;">আমি প্রমিত।</h3>
-      <p class="body-text">AI Engineer হিসেবে আমার মূল আগ্রহ এমন software তৈরি করা, যা মানুষের কাজকে সত্যিই সহজ করে।</p>
-      <p class="body-text">AI model নিয়ে experiment করা যেমন ভালো লাগে, তেমনি সেই model-কে একটি real-world application-এর মধ্যে বসিয়ে ব্যবহারযোগ্য করে তোলাটাও আমার কাছে সমান গুরুত্বপূর্ণ।</p>
-      <p class="body-text" style="margin: 0;">একদিকে AI, অন্যদিকে software engineering—এই দুই দিককে একসাথে ব্যবহার করেই আমি project তৈরি করতে পছন্দ করি。</p>
-    </div>
-  </section>
 
   <section style="border-bottom: none; padding-bottom: 0;">
     <h2 class="section-title">আপনার সমস্যাটা হয়তো আমি solve করতে পারি</h2>
@@ -641,7 +656,7 @@
 
   const fallbackIcons = ["terminal", "chip", "book", "cart", "mic"];
   
-  fetch("data.json")
+  fetch("/api/projects")
     .then(res => res.json())
     .then(items => {
       const container = document.getElementById("list");

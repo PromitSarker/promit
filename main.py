@@ -96,5 +96,7 @@ def admin_page():
     """Serve the admin interface."""
     return FileResponse(BASE / "static/admin.html")
 
-# Serve the static files (index.html, styles, etc.) at the root
-app.mount("/", StaticFiles(directory=BASE / "static", html=True), name="static")
+@app.get("/")
+def serve_index():
+    """Serve the main portfolio page."""
+    return FileResponse(BASE / "index.html")
