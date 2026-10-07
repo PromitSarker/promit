@@ -614,7 +614,7 @@
 
   const fallbackIcons = ["terminal", "chip", "book", "cart", "mic"];
   
-  fetch("/api/projects")
+  fetch("data.json")
     .then(res => res.json())
     .then(items => {
       const container = document.getElementById("list");
